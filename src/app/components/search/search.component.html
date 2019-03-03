@@ -1,0 +1,76 @@
+
+<div class="col-lg-12 row mt-5">
+  <div class="col-lg-2">
+      &nbsp;
+  </div>
+  <div class="col-lg-8 row ">
+    <div class="col-lg-8">
+      <input class="form-control" type="text" required autocomplete="off" placeholder="Search Restaurants" #search (keyup.enter)="searchSubmit(search.value)"/>
+    </div>
+    <div class="col-lg-4 m-0 p-0">
+      <button class="col-lg btn btn-primary" (click)="searchSubmit(search.value)"> Search</button>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    &nbsp;
+  </div>
+</div>
+
+<div class="col-lg-12 row mt-5">
+  <div class="col-lg-2" style="border-right: 1px solid #eee; height: 80vh;">
+    <mat-form-field>
+      <mat-select placeholder="Categories" [formControl]="establishments" multiple [(ngModel)]="selectedEstablishments">
+        <mat-option *ngFor="let establishment of establishmentsList" [value]="establishment">{{establishment.establishment.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-chip-list>
+      <mat-chip *ngFor="let establishment of selectedEstablishments" [value]="establishment" color="primary" selected>{{establishment.establishment.name}}</mat-chip>
+    </mat-chip-list>
+    <mat-form-field>
+      <mat-select placeholder="Collections" [formControl]="collections" multiple [(ngModel)]="selectedCollections">
+        <mat-option *ngFor="let collection of collectionsList" [value]="collection">{{collection.collection.title}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-chip-list>
+      <mat-chip *ngFor="let establishment of selectedCollections" [value]="establishment" color="primary" selected>{{establishment.collection.title}}</mat-chip>
+    </mat-chip-list>
+    <mat-form-field>
+      <mat-select placeholder="Cuisines" [formControl]="cuisines" multiple [(ngModel)]="selectedCuisines">
+        <mat-option *ngFor="let cuisine of cuisinesList" [value]="cuisine">{{cuisine.cuisine.cuisine_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-chip-list>
+      <mat-chip *ngFor="let establishment of selectedCuisines" [value]="establishment" color="primary" selected>{{establishment.cuisine.cuisine_name}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="col-lg-10 restaurants">
+    <div class="col-lg-12 row">
+      <ng-container *ngFor="let restaurant of restaurants">
+        <div routerLink="/restaurant/{{restaurant.restaurant.id}}" class="col-lg-5 row res-item mb-3 m-0 p-0">
+          <div class="col-lg-4  p-0 res-thumb">
+            <img src="{{restaurant.restaurant.thumb}}">
+          </div>
+          <div class="col-lg-6 ">
+            <div class="res-name">{{restaurant.restaurant.name}}</div>
+            <div class="res-cuisines">{{restaurant.restaurant.cuisines}}</div>
+            <div class="res-price"> Cost {{restaurant.restaurant.average_cost_for_two}} for two</div>
+            <a class="res-redirect" href="{{restaurant.restaurant.url}}" target="_blank">Zomato Link</a>
+
+          </div>
+          <div class="col-lg-2 ">
+            <div class="res-rating">{{restaurant.restaurant.user_rating.aggregate_rating}}</div>
+          </div>
+        </div>
+        <div class="col-lg-1">&nbsp;</div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

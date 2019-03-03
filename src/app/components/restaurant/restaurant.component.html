@@ -1,0 +1,63 @@
+<div class="col-lg-12 rest-cont mt-4">
+  <div class="loader col-lg-12 " *ngIf="!restaurant">Loading...</div>
+  <div class="col-lg-12 " *ngIf="restaurant">
+    <div class="col-lg-12 img-cont card mb-2">
+      <img src="{{restaurant.featured_image}}" alt="">
+    </div>
+
+    <div class="col-lg-12 rest-info1 card mb-2">
+      <div class="res-name">{{restaurant.name}}</div>
+      <div class="res-address">{{restaurant.location.address}} | {{restaurant.cuisines}}</div>
+      <div class="" style="right: 1em; position: absolute;">
+        <div class="res-rating">{{restaurant.user_rating.aggregate_rating}}</div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 rest-info1 card mb-2">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <h3>Cuisines</h3>
+            <div>{{restaurant.cuisines}}</div>
+          </div>
+
+          <div class="mb-3">
+            <h3>Average Cost</h3>
+            <div>Rs. {{restaurant.average_cost_for_two}} for two people</div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="mb-3">
+            <h3>Average Cost</h3>
+            <div>Rs. {{restaurant.average_cost_for_two}} for two people</div>
+          </div>
+
+          <div class="mb-3">
+            <h3>Opening hours </h3>
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 review-list card mb-2">
+      <h3 *ngIf="reviews && reviews.length">Reviews</h3>
+      <div class="review card mt-2 p-1" *ngFor="let review of reviews" >
+        Rated : {{review.userRating}} | {{review.description}}
+      </div>
+
+      <div class="write-review">
+        <textarea class="mt-2" rows="3" style="width:100%;" name="reviewContent" [(ngModel)]="reviewContent"></textarea>
+        <mat-form-field>
+          <mat-select placeholder="Rate Restaurant" [(ngModel)]="userRating">
+            <mat-option *ngFor="let rate of ratings" [value]="rate">{{rate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br/>
+        <button class="btn btn-primary mb-1" (click)="submitReview()">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+
+</div>

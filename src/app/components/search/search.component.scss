@@ -1,0 +1,34 @@
+.restaurants{
+  .res-item{
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  .res-thumb{
+    img{
+      width: 100%;
+    }
+  }
+  .res-name{
+    color: #DB649F;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .res-cuisines{
+    color: #89959B
+  }
+  .res-price{
+
+
+  }
+  .res-redirect{
+
+  }
+  .res-rating{
+    margin-top: 2px;
+    background: #9ACD32;
+    padding: 0.5em;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+  }
+}

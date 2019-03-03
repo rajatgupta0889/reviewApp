@@ -1,0 +1,123 @@
+<div class="form">
+
+  <div>
+    <div id="signup"  *ngIf="authType === 'signup'">
+
+
+        <form class="modal-content" [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+          <h1 class="text-center">Please Sign Up Here !!</h1>
+          <div class="container">
+            <label ><b>Name</b></label>
+            <input type="text" placeholder="Enter Name"  required  formControlName="name">
+            <div class="error " *ngIf="signupForm.controls.name.invalid && signupForm.touched">*Required</div>
+            <label ><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" required email formControlName="email">
+            <div class="error" *ngIf="signupForm.controls.email.invalid && signupForm.touched">*Required</div>
+            <label ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password"  required formControlName="password">
+            <div class="error" *ngIf="signupForm.controls.password.invalid && signupForm.touched">*Required</div>
+            <div class="clearfix text-center mt-4">
+              <button type="submit" class="btn btn-primary text-center mr-1" [disabled]="loginForm.invalid">Sign Up</button>
+              <button type="button" (click)="changeTab('login')" class="btn btn-danger align-items-center">Log In</button>
+            </div>
+
+          </div>
+        </form>
+      <!--<form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">-->
+
+        <!--<div class="top-row">-->
+          <!--<div class="field-wrap">-->
+            <!--<label>-->
+              <!--First Name<span class="req">*</span>-->
+            <!--</label>-->
+            <!--<input type="text" required autocomplete="off" formControlName="firstName"/>-->
+          <!--</div>-->
+
+          <!--<div class="field-wrap">-->
+            <!--<label>-->
+              <!--Last Name<span class="req">*</span>-->
+            <!--</label>-->
+            <!--<input type="text"required autocomplete="off" formControlName="lastName"/>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="field-wrap">-->
+          <!--<label>-->
+            <!--Email Address<span class="req">*</span>-->
+          <!--</label>-->
+          <!--<input type="email"required email autocomplete="off" formControlName="email"/>-->
+        <!--</div>-->
+
+        <!--<div class="field-wrap">-->
+          <!--<label>-->
+            <!--Set A Password<span class="req">*</span>-->
+          <!--</label>-->
+          <!--<input type="password"required autocomplete="off" formControlName="password"/>-->
+        <!--</div>-->
+
+        <!--<button type="submit" class="button button-block">Get Started</button>-->
+
+      <!--</form>-->
+
+    </div>
+
+    <div id="login" *ngIf="authType === 'login'">
+
+
+      <form class="modal-content" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+
+        <h1 class="text-center">Welcome Back!</h1>
+        <div class="container">
+          <hr>
+
+          <label ><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" required email formControlName="email">
+          <div class="error " *ngIf="loginForm.controls.email.invalid && loginForm.touched">*Required</div>
+
+          <label ><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" required formControlName="password">
+          <div class="error" *ngIf="loginForm.controls.password.invalid && loginForm.touched">*Required</div>
+
+
+          <div class="clearfix text-center mt-4" >
+            <button type="submit" class="btn btn-primary text-center mr-1" [disabled]="loginForm.invalid" >Log In</button>
+            <button type="button" (click)="changeTab('signup')" class="btn btn-danger align-items-center ">Sign Up</button>
+          </div>
+
+        </div>
+      </form>
+        <!--<div class="wrapper">-->
+          <!--<form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">-->
+            <!--<h2 class="form-signin-heading">Please login</h2>-->
+            <!--<input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />-->
+            <!--<input type="password" class="form-control" name="password" placeholder="Password" required=""/>-->
+            <!--<label class="checkbox">-->
+              <!--<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me-->
+            <!--</label>-->
+            <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->
+          <!--</form>-->
+        <!--</div>-->
+
+        <!--<div class="field-wrap">-->
+          <!--<label>-->
+            <!--Email Address<span class="req">*</span>-->
+          <!--</label>-->
+          <!--<input type="email" formControlName="email" required email/>-->
+        <!--</div>-->
+
+        <!--<div class="field-wrap">-->
+          <!--<label>-->
+            <!--Password<span class="req">*</span>-->
+          <!--</label>-->
+          <!--<input type="password"required formControlName="password" required/>-->
+        <!--</div>-->
+
+        <!--<p class="forgot"><a href="#">Forgot Password?</a></p>-->
+
+        <!--<button class="button button-block">Log In</button>-->
+
+    </div>
+
+  </div><!-- tab-content -->
+
+</div> <!-- /form -->
